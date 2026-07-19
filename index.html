@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>π Memory</title>
+
+    <link
+        rel="stylesheet"
+        href="./css/style.css">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+
+    <div class="background">
+
+        <div class="blob blob1"></div>
+
+        <div class="blob blob2"></div>
+
+        <div class="blob blob3"></div>
+
+    </div>
+
+
+
+    <!-- Toast -->
+
+    <div
+        id="toast"
+        class="toast">
+
+        Wait until the sequence finishes!
+
+    </div>
+
+
+
+    <!-- Instruction Screen -->
+
+    <div
+        id="instructionScreen"
+        class="instruction-screen">
+
+        <div class="instruction-box">
+
+            <button
+                id="closeInstructions"
+                class="close-btn">
+
+                &times;
+
+            </button>
+
+            <h1>
+
+                π Memory
+
+            </h1>
+
+            <p id="instructionText">
+
+                Watch the highlighted digits of π.
+
+                <br><br>
+
+                Memorize the sequence.
+
+                <br><br>
+
+                After the countdown,
+                repeat it using the keypad.
+
+                <br><br>
+
+                Don't press any keys until
+                it's your turn!
+
+            </p>
+
+            <div id="piDisplay">
+
+                3 . 1 4 1 5
+
+            </div>
+
+            <div id="countdown">
+
+                3
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Main -->
+
+    <main class="container">
+
+        <header>
+
+            <h1>
+
+                π Memory
+
+            </h1>
+
+            <p>
+
+                How many digits can you remember?
+
+            </p>
+
+        </header>
+
+
+
+        <!-- Stats -->
+
+        <section id="stats">
+
+            <div class="stat-card">
+
+                <span>
+
+                    ROUND
+
+                </span>
+
+                <strong id="roundCounter">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>
+
+                    DIGITS
+
+                </span>
+
+                <strong id="digitCounter">
+
+                    0
+
+                </strong>
+
+            </div>
+
+            <div class="stat-card">
+
+                <span>
+
+                    BEST
+
+                </span>
+
+                <strong id="bestCounter">
+
+                    0
+
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Difficulty -->
+
+        <section
+            id="difficultyPanel">
+
+            <label
+                for="difficultySlider">
+
+                Difficulty
+
+            </label>
+
+            <div class="difficulty-labels">
+
+                <span>
+
+                    Easy
+
+                </span>
+
+                <span>
+
+                    Medium
+
+                </span>
+
+                <span>
+
+                    Hard
+
+                </span>
+
+                <span>
+
+                    Impossible
+
+                </span>
+
+            </div>
+
+            <input
+
+                id="difficultySlider"
+
+                type="range"
+
+                min="0"
+
+                max="3"
+
+                step="1"
+
+                value="0">
+
+            <p id="difficultyName">
+
+                🟢 Easy
+
+            </p>
+
+        </section>
+
+
+
+        <!-- Progress -->
+
+        <section id="progressSection">
+
+            <span>
+
+                Progress
+
+            </span>
+
+            <div id="progressBar">
+
+                <div id="progressFill"></div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Keypad -->
+
+        <section id="keypad">
+
+            <button
+                class="key"
+                data-value="1">
+
+                1
+
+            </button>
+
+            <button
+                class="key"
+                data-value="2">
+
+                2
+
+            </button>
+
+            <button
+                class="key"
+                data-value="3">
+
+                3
+
+            </button>
+
+            <button
+                class="key"
+                data-value="4">
+
+                4
+
+            </button>
+
+            <button
+                class="key"
+                data-value="5">
+
+                5
+
+            </button>
+
+            <button
+                class="key"
+                data-value="6">
+
+                6
+
+            </button>
+
+            <button
+                class="key"
+                data-value="7">
+
+                7
+
+            </button>
+
+            <button
+                class="key"
+                data-value="8">
+
+                8
+
+            </button>
+
+            <button
+                class="key"
+                data-value="9">
+
+                9
+
+            </button>
+
+            <div></div>
+
+            <button
+                class="key"
+                data-value="0">
+
+                0
+
+            </button>
+
+            <div></div>
+
+        </section>
+
+
+
+        <!-- Controls -->
+
+        <section
+            class="controls">
+
+            <button
+                id="start">
+
+                ▶ Start Game
+
+            </button>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Game Over -->
+
+    <div
+        id="gameOver"
+        class="game-over hidden">
+
+        <div class="game-over-box">
+
+<h2>
+
+    Game Over
+
+</h2>
+
+<div id="starRating" class="star-rating"></div>
+
+<p id="ratingText"></p>
+
+<p id="finalScore">
+
+    0 digits
+
+</p>
+
+            <p id="difficultyResult">
+
+                Easy
+
+            </p>
+
+            <button
+                id="restart">
+
+                Play Again
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <script src="./js/pi.js"></script>
+
+    <script src="./js/game.js"></script>
+
+</body>
+
+</html>

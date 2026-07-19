@@ -1,0 +1,1309 @@
+/* ==========================================================
+   π MEMORY v2.0
+   Modern Glass UI
+   Part A - Foundation & Layout
+========================================================== */
+
+/* ---------- Google Font ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ---------- Variables ---------- */
+
+:root{
+
+    --bg1:#09111d;
+    --bg2:#121d30;
+    --bg3:#182845;
+
+    --glass:rgba(255,255,255,.08);
+    --glass-border:rgba(255,255,255,.18);
+
+    --text:#f8fafc;
+    --muted:#9fb3c8;
+
+    --easy:#22c55e;
+    --medium:#3b82f6;
+    --hard:#a855f7;
+    --impossible:#ef4444;
+
+    --accent:var(--easy);
+
+    --shadow:
+        0 15px 40px rgba(0,0,0,.35);
+
+    --blur:18px;
+
+    --radius:22px;
+
+}
+
+/* ---------- Reset ---------- */
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--bg1),
+            var(--bg2),
+            var(--bg3)
+        );
+
+    color:var(--text);
+
+    font-family:
+        "Inter",
+        sans-serif;
+
+    position:relative;
+
+}
+
+/* ==========================================================
+   Animated Background
+========================================================== */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    z-index:-2;
+
+}
+
+.blob{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.45;
+
+    animation:
+        float 18s ease-in-out infinite;
+
+}
+
+.blob1{
+
+    width:420px;
+    height:420px;
+
+    background:#3b82f6;
+
+    left:-120px;
+    top:-100px;
+
+}
+
+.blob2{
+
+    width:500px;
+    height:500px;
+
+    background:#8b5cf6;
+
+    right:-150px;
+    top:20%;
+
+    animation-delay:-5s;
+
+}
+
+.blob3{
+
+    width:380px;
+    height:380px;
+
+    background:#14b8a6;
+
+    left:25%;
+    bottom:-140px;
+
+    animation-delay:-10s;
+
+}
+
+@keyframes float{
+
+    0%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+    33%{
+
+        transform:
+            translate(50px,-30px)
+            scale(1.08);
+
+    }
+
+    66%{
+
+        transform:
+            translate(-40px,40px)
+            scale(.94);
+
+    }
+
+    100%{
+
+        transform:
+            translate(0,0)
+            scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   Main Container
+========================================================== */
+
+.container{
+
+    width:min(92%,560px);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+    padding:34px;
+
+    border-radius:32px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(var(--blur));
+
+    -webkit-backdrop-filter:blur(var(--blur));
+
+    border:1px solid var(--glass-border);
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==========================================================
+   Header
+========================================================== */
+
+header{
+
+    text-align:center;
+
+}
+
+header h1{
+
+    font-size:clamp(2.5rem,6vw,3.5rem);
+
+    font-weight:700;
+
+    letter-spacing:-1px;
+
+}
+
+header p{
+
+    margin-top:8px;
+
+    color:var(--muted);
+
+    font-size:.95rem;
+
+}
+
+/* ==========================================================
+   Stats
+========================================================== */
+
+#stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+
+}
+
+.stat-card{
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border-radius:20px;
+
+    padding:18px 10px;
+
+    text-align:center;
+
+    transition:
+        transform .25s,
+        border-color .25s,
+        box-shadow .25s;
+
+}
+
+.stat-card:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.25);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.stat-card span{
+
+    display:block;
+
+    font-size:.72rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    color:var(--muted);
+
+}
+
+.stat-card strong{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-size:1.8rem;
+
+    font-weight:700;
+
+}
+
+/* ==========================================================
+   Shared Glass Sections
+========================================================== */
+
+#difficultyPanel,
+#progressSection{
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:22px;
+
+    padding:20px;
+
+    backdrop-filter:blur(10px);
+
+}
+
+#difficultyPanel label,
+#progressSection span{
+
+    display:block;
+
+    margin-bottom:14px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/* ==========================================================
+   π MEMORY v2.0
+   Part B - Controls, Slider, Progress & Keypad
+========================================================== */
+
+/* ==========================================================
+   Difficulty
+========================================================== */
+
+.difficulty-labels{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+    font-size:.8rem;
+
+    color:var(--muted);
+
+    user-select:none;
+
+}
+
+.difficulty-labels span{
+
+    flex:1;
+
+    text-align:center;
+
+    transition:
+        color .3s,
+        transform .3s;
+
+}
+
+#difficultyName{
+
+    margin-top:16px;
+
+    text-align:center;
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:var(--accent);
+
+    transition:.3s;
+
+}
+
+/* ---------- Slider ---------- */
+
+#difficultySlider{
+
+    width:100%;
+
+    height:8px;
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    border-radius:999px;
+
+    cursor:pointer;
+
+    outline:none;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            rgba(255,255,255,.15)
+        );
+
+    transition:
+        background .3s,
+        box-shadow .3s;
+
+}
+
+#difficultySlider:hover{
+
+    box-shadow:
+        0 0 18px color-mix(in srgb, var(--accent) 55%, transparent);
+
+}
+
+#difficultySlider::-webkit-slider-runnable-track{
+
+    height:8px;
+
+    border-radius:999px;
+
+    background:transparent;
+
+}
+
+#difficultySlider::-webkit-slider-thumb{
+
+    appearance:none;
+    -webkit-appearance:none;
+
+    width:24px;
+    height:24px;
+
+    margin-top:-8px;
+
+    border-radius:50%;
+
+    border:3px solid white;
+
+    background:var(--accent);
+
+    cursor:pointer;
+
+    transition:
+        transform .2s,
+        box-shadow .25s,
+        background .25s;
+
+    box-shadow:
+        0 0 20px var(--accent);
+
+}
+
+#difficultySlider::-webkit-slider-thumb:hover{
+
+    transform:scale(1.15);
+
+}
+
+#difficultySlider::-moz-range-track{
+
+    height:8px;
+
+    border:none;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.15);
+
+}
+
+#difficultySlider::-moz-range-thumb{
+
+    width:24px;
+    height:24px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--accent);
+
+    box-shadow:
+        0 0 20px var(--accent);
+
+    cursor:pointer;
+
+}
+
+/* ==========================================================
+   Progress
+========================================================== */
+
+#progressBar{
+
+    width:100%;
+
+    height:12px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+#progressFill{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--accent),
+            white
+        );
+
+    transition:
+        width .25s ease,
+        background .3s;
+
+}
+
+/* ==========================================================
+   Keypad
+========================================================== */
+
+#keypad{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:16px;
+
+}
+
+.key{
+
+    aspect-ratio:1;
+
+    border:none;
+
+    border-radius:22px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.14);
+
+    backdrop-filter:blur(12px);
+
+    color:white;
+
+    font-size:1.9rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    transition:
+        transform .15s,
+        background .2s,
+        border-color .2s,
+        box-shadow .25s;
+
+}
+
+.key:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.key:active{
+
+    transform:
+        scale(.94);
+
+}
+
+/* ---------- Playback ---------- */
+
+.key.active{
+
+    background:var(--accent);
+
+    color:#06111d;
+
+    border-color:var(--accent);
+
+    box-shadow:
+        0 0 25px var(--accent),
+        0 0 50px color-mix(in srgb, var(--accent) 55%, transparent);
+
+    transform:
+        scale(1.08);
+
+}
+
+/* ---------- Correct ---------- */
+
+.key.correct{
+
+    background:#22c55e !important;
+
+    color:#06111d;
+
+    border-color:#22c55e;
+
+    box-shadow:
+        0 0 18px #22c55e,
+        0 0 40px rgba(34,197,94,.6);
+
+}
+
+/* ---------- Wrong ---------- */
+
+.key.wrong{
+
+    background:#ef4444 !important;
+
+    color:white;
+
+    border-color:#ef4444;
+
+    box-shadow:
+        0 0 18px #ef4444,
+        0 0 40px rgba(239,68,68,.55);
+
+}
+
+/* ==========================================================
+   Controls
+========================================================== */
+
+.controls{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+#start{
+
+    min-width:220px;
+
+    padding:15px 32px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            color-mix(in srgb, var(--accent) 65%, white)
+        );
+
+    color:white;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s,
+        box-shadow .25s,
+        background .3s;
+
+    box-shadow:
+        0 12px 30px color-mix(in srgb, var(--accent) 35%, transparent);
+
+}
+
+#start:hover{
+
+    transform:
+        translateY(-3px);
+
+}
+
+#start:active{
+
+    transform:
+        scale(.97);
+
+}
+
+#start:disabled{
+
+    opacity:.45;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+/* ==========================================================
+   Toast
+========================================================== */
+
+.toast{
+
+    position:fixed;
+
+    top:24px;
+
+    right:24px;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    background:
+        rgba(18,29,48,.82);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    color:white;
+
+    transform:
+        translateX(150%);
+
+    opacity:0;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.3);
+
+    z-index:1000;
+
+}
+
+.toast.show{
+
+    transform:
+        translateX(0);
+
+    opacity:1;
+
+}
+
+/* ==========================================================
+   π MEMORY v2.0
+   Part C - Modals, Animations & Responsive
+========================================================== */
+
+/* ==========================================================
+   Utilities
+========================================================== */
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.fade-in{
+
+    animation:fadeIn .35s ease;
+
+}
+
+.pop{
+
+    animation:pop .28s ease;
+
+}
+
+.pulse{
+
+    animation:pulse .8s ease;
+
+}
+
+.shake{
+
+    animation:shake .35s ease;
+
+}
+
+/* ==========================================================
+   Instruction Screen
+========================================================== */
+
+.instruction-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:24px;
+
+    background:rgba(5,10,20,.65);
+
+    backdrop-filter:blur(12px);
+
+    z-index:100;
+
+}
+
+.instruction-box{
+
+    width:min(95%,560px);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:28px;
+
+    padding:36px;
+
+    text-align:center;
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.35);
+
+    position:relative;
+
+}
+
+.close-btn{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:1.4rem;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.close-btn:hover{
+
+    background:#ef4444;
+
+    transform:rotate(90deg);
+
+}
+
+#instructionText{
+
+    color:var(--muted);
+
+    line-height:1.8;
+
+    margin:28px 0;
+
+}
+
+#piDisplay{
+
+    min-height:70px;
+
+    margin:30px 0;
+
+    font-size:clamp(2rem,6vw,3.5rem);
+
+    font-weight:700;
+
+    letter-spacing:.35rem;
+
+}
+
+.pi-highlight{
+
+    color:var(--accent);
+
+    text-shadow:
+        0 0 25px var(--accent);
+
+}
+
+#countdown{
+
+    min-height:60px;
+
+    font-size:3rem;
+
+    font-weight:700;
+
+    color:var(--accent);
+
+}
+
+/* ==========================================================
+   Game Over
+========================================================== */
+
+.game-over{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(5,10,20,.72);
+
+    backdrop-filter:blur(14px);
+
+    z-index:120;
+
+}
+
+.game-over-box{
+
+    width:min(90%,420px);
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    border-radius:28px;
+
+    padding:40px;
+
+    text-align:center;
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,.4);
+
+}
+
+.game-over-box h2{
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+}
+
+#finalScore{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+#difficultyResult{
+
+    color:var(--muted);
+
+    margin-bottom:28px;
+
+}
+
+#restart{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        var(--accent),
+        color-mix(in srgb,var(--accent) 65%,white)
+    );
+
+    color:white;
+
+    font-weight:700;
+
+    font-size:1rem;
+
+    transition:.25s;
+
+}
+
+#restart:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ==========================================================
+   Animations
+========================================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.82);
+
+        opacity:0;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+@keyframes shake{
+
+    0%,
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+    25%{
+
+        transform:translateX(-8px);
+
+    }
+
+    75%{
+
+        transform:translateX(8px);
+
+    }
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:700px){
+
+    .container{
+
+        padding:22px;
+
+        gap:20px;
+
+    }
+
+    #stats{
+
+        gap:12px;
+
+    }
+
+    .stat-card{
+
+        padding:14px 8px;
+
+    }
+
+    .stat-card strong{
+
+        font-size:1.5rem;
+
+    }
+
+    .difficulty-labels{
+
+        font-size:.68rem;
+
+    }
+
+    #keypad{
+
+        gap:12px;
+
+    }
+
+    .key{
+
+        border-radius:18px;
+
+        font-size:1.5rem;
+
+    }
+
+    #start{
+
+        width:100%;
+
+    }
+
+}
+
+@media (max-width:460px){
+
+    .container{
+
+        width:96%;
+
+        padding:18px;
+
+    }
+
+    header h1{
+
+        font-size:2.2rem;
+
+    }
+
+    #piDisplay{
+
+        letter-spacing:.2rem;
+
+        font-size:2rem;
+
+    }
+
+    .instruction-box{
+
+        padding:28px 20px;
+
+    }
+
+}
+
+/* ==========================================================
+   Accent Color Helpers
+   (JavaScript switches --accent)
+========================================================== */
+
+body.easy{
+
+    --accent:var(--easy);
+
+}
+
+body.medium{
+
+    --accent:var(--medium);
+
+}
+
+body.hard{
+
+    --accent:var(--hard);
+
+}
+
+body.impossible{
+
+    --accent:var(--impossible);
+
+}
+
+.star{
+
+    color:#475569;
+
+    font-size:2.3rem;
+
+    transform:scale(.4);
+
+    opacity:0;
+
+}
+
+.star.filled{
+
+    color:#FFD700;
+
+    text-shadow:
+
+        0 0 12px gold,
+
+        0 0 30px gold;
+
+}
