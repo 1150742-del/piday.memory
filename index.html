@@ -1,429 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f1e9d8">
+    <title>PiLabs — Explore the number π</title>
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 
-    <title>π Memory</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css">
-
+    <link rel="stylesheet" href="style.css">
+    <script src="pi.js" defer></script>
+    <script src="game.js" defer></script>
 </head>
 
 <body>
+    <div class="paper-grain" aria-hidden="true"></div>
 
-    <!-- Background -->
+    <div class="site-shell">
+        <header class="topbar">
+            <a class="brand" href="#" aria-label="PiLabs home">
+                <span class="brand-mark">π</span>
+                <span class="brand-copy">
+                    <strong>PiLabs</strong>
+                    <small>MATHEMATICS, MADE TANGIBLE.</small>
+                </span>
+            </a>
 
-    <div class="background">
-
-        <div class="blob blob1"></div>
-
-        <div class="blob blob2"></div>
-
-        <div class="blob blob3"></div>
-
-    </div>
-
-
-
-    <!-- Toast -->
-
-    <div
-        id="toast"
-        class="toast">
-
-        Wait until the sequence finishes!
-
-    </div>
-
-
-
-    <!-- Instruction Screen -->
-
-    <div
-        id="instructionScreen"
-        class="instruction-screen">
-
-        <div class="instruction-box">
-
-            <button
-                id="closeInstructions"
-                class="close-btn">
-
-                &times;
-
-            </button>
-
-            <h1>
-
-                π Memory
-
-            </h1>
-
-            <p id="instructionText">
-
-                Watch the highlighted digits of π.
-
-                <br><br>
-
-                Memorize the sequence.
-
-                <br><br>
-
-                After the countdown,
-                repeat it using the keypad.
-
-                <br><br>
-
-                Don't press any keys until
-                it's your turn!
-
-            </p>
-
-            <div id="piDisplay">
-
-                3 . 1 4 1 5
-
+            <div class="header-right">
+                <span class="header-note">
+                    <span class="ink-dot"></span>
+                    AN OPEN NOTEBOOK
+                </span>
+                <button id="helpButton" class="help-button" type="button">
+                    How it works <span aria-hidden="true">↗</span>
+                </button>
             </div>
-
-            <div id="countdown">
-
-                3
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- Main -->
-
-    <main class="container">
-
-        <header>
-
-            <h1>
-
-                π Memory
-
-            </h1>
-
-            <p>
-
-                How many digits can you remember?
-
-            </p>
-
         </header>
 
-
-
-        <!-- Stats -->
-
-        <section id="stats">
-
-            <div class="stat-card">
-
-                <span>
-
-                    ROUND
-
-                </span>
-
-                <strong id="roundCounter">
-
-                    0
-
-                </strong>
-
-            </div>
-
-            <div class="stat-card">
-
-                <span>
-
-                    DIGITS
-
-                </span>
-
-                <strong id="digitCounter">
-
-                    0
-
-                </strong>
-
-            </div>
-
-            <div class="stat-card">
-
-                <span>
-
-                    BEST
-
-                </span>
-
-                <strong id="bestCounter">
-
-                    0
-
-                </strong>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- Difficulty -->
-
-        <section
-            id="difficultyPanel">
-
-            <label
-                for="difficultySlider">
-
-                Difficulty
-
-            </label>
-
-            <div class="difficulty-labels">
-
-                <span>
-
-                    Easy
-
-                </span>
-
-                <span>
-
-                    Medium
-
-                </span>
-
-                <span>
-
-                    Hard
-
-                </span>
-
-                <span>
-
-                    Impossible
-
-                </span>
-
-            </div>
-
-            <input
-
-                id="difficultySlider"
-
-                type="range"
-
-                min="0"
-
-                max="3"
-
-                step="1"
-
-                value="0">
-
-            <p id="difficultyName">
-
-                🟢 Easy
-
-            </p>
-
-        </section>
-
-
-
-        <!-- Progress -->
-
-        <section id="progressSection">
-
-            <span>
-
-                Progress
-
-            </span>
-
-            <div id="progressBar">
-
-                <div id="progressFill"></div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- Keypad -->
-
-        <section id="keypad">
-
-            <button
-                class="key"
-                data-value="1">
-
-                1
-
-            </button>
-
-            <button
-                class="key"
-                data-value="2">
-
-                2
-
-            </button>
-
-            <button
-                class="key"
-                data-value="3">
-
-                3
-
-            </button>
-
-            <button
-                class="key"
-                data-value="4">
-
-                4
-
-            </button>
-
-            <button
-                class="key"
-                data-value="5">
-
-                5
-
-            </button>
-
-            <button
-                class="key"
-                data-value="6">
-
-                6
-
-            </button>
-
-            <button
-                class="key"
-                data-value="7">
-
-                7
-
-            </button>
-
-            <button
-                class="key"
-                data-value="8">
-
-                8
-
-            </button>
-
-            <button
-                class="key"
-                data-value="9">
-
-                9
-
-            </button>
-
-            <div></div>
-
-            <button
-                class="key"
-                data-value="0">
-
-                0
-
-            </button>
-
-            <div></div>
-
-        </section>
-
-
-
-        <!-- Controls -->
-
-        <section
-            class="controls">
-
-            <button
-                id="start">
-
-                ▶ Start Game
-
-            </button>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- Game Over -->
-
-    <div
-        id="gameOver"
-        class="game-over hidden">
-
-        <div class="game-over-box">
-
-<h2>
-
-    Game Over
-
-</h2>
-
-<div id="starRating" class="star-rating"></div>
-
-<p id="ratingText"></p>
-
-<p id="finalScore">
-
-    0 digits
-
-</p>
-
-            <p id="difficultyResult">
-
-                Easy
-
-            </p>
-
-            <button
-                id="restart">
-
-                Play Again
-
-            </button>
-
+        <div class="workspace">
+            <aside class="sidebar" aria-label="PiLabs navigation">
+                <div class="sidebar-section">
+                    <p class="sidebar-label">THE NOTEBOOK</p>
+
+                    <a class="nav-item active" href="#memory" aria-current="page">
+                        <span class="nav-icon">π</span>
+                        <span class="nav-copy">
+                            <strong>π Memory</strong>
+                            <small>Train your recall</small>
+                        </span>
+                        <span class="nav-indicator" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="sidebar-section">
+                    <p class="sidebar-label">MORE TO EXPLORE</p>
+
+                    <a class="nav-item upcoming" href="#coming-soon" aria-disabled="true">
+                        <span class="nav-icon">○</span>
+                        <span class="nav-copy">
+                            <strong>Why π Exists</strong>
+                            <small>Circumference & diameter</small>
+                        </span>
+                        <span class="soon-tag">SOON</span>
+                    </a>
+
+                    <a class="nav-item upcoming" href="#coming-soon" aria-disabled="true">
+                        <span class="nav-icon">△</span>
+                        <span class="nav-copy">
+                            <strong>Draw Your Way to π</strong>
+                            <small>Approximate the circle</small>
+                        </span>
+                        <span class="soon-tag">SOON</span>
+                    </a>
+
+                    <a class="nav-item upcoming" href="#coming-soon" aria-disabled="true">
+                        <span class="nav-icon">·</span>
+                        <span class="nav-copy">
+                            <strong>Guess π</strong>
+                            <small>A chance experiment</small>
+                        </span>
+                        <span class="soon-tag">SOON</span>
+                    </a>
+
+                    <a class="nav-item upcoming" href="#coming-soon" aria-disabled="true">
+                        <span class="nav-icon">∿</span>
+                        <span class="nav-copy">
+                            <strong>π in the Wild</strong>
+                            <small>Angles, waves & motion</small>
+                        </span>
+                        <span class="soon-tag">SOON</span>
+                    </a>
+                </div>
+
+                <div class="sidebar-note" id="coming-soon">
+                    <span class="note-symbol">✳</span>
+                    <p class="handwriting">More experiments are being sketched out.</p>
+                    <span class="sidebar-note-caption">THE NOTEBOOK IS GROWING</span>
+                </div>
+            </aside>
+
+            <main id="memory" class="main-content">
+                <section class="page-heading">
+                    <div>
+                        <p class="eyebrow">EXPERIMENT 01 <span class="eyebrow-divider">/</span> MEMORY</p>
+                        <h1>Remember <span class="pi-title">π</span><span class="title-period">.</span></h1>
+                        <p class="subtitle">
+                            A small exercise in attention, patterns, and the infinite digits of a circle.
+                        </p>
+                    </div>
+
+                    <div class="margin-note" aria-hidden="true">
+                        <span class="handwriting">a number without an end</span>
+                        <svg viewBox="0 0 120 46">
+                            <path d="M5 8 C34 4 45 18 65 18 S92 25 108 35"
+                                  fill="none" stroke="currentColor"
+                                  stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M98 34 L108 35 L105 25"
+                                  fill="none" stroke="currentColor"
+                                  stroke-width="1.5" stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                </section>
+
+                <section class="stats-strip" aria-label="Game statistics">
+                    <article class="stat-card">
+                        <span class="stat-label">ROUND</span>
+                        <strong id="roundCounter">1</strong>
+                        <small>current attempt</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-label">SEQUENCE LENGTH</span>
+                        <strong><span id="digitCounter">1</span><span class="unit"> digits</span></strong>
+                        <small>digits after the decimal</small>
+                    </article>
+
+                    <article class="stat-card">
+                        <span class="stat-label">PERSONAL BEST</span>
+                        <strong><span id="bestCounter">0</span><span class="unit"> digits</span></strong>
+                        <small>longest completed sequence</small>
+                    </article>
+                </section>
+
+                <div class="game-layout">
+                    <section class="workbench paper-panel" aria-labelledby="workbenchTitle">
+                        <div class="panel-heading">
+                            <div>
+                                <p class="eyebrow">THE SPECIMEN</p>
+                                <h2 id="workbenchTitle">Study the sequence</h2>
+                            </div>
+                            <span class="specimen-number">A / 01</span>
+                        </div>
+
+                        <div class="pi-paper">
+                            <div class="pi-paper-top">
+                                <span>DECIMAL EXPANSION OF PI</span>
+                                <span class="paper-stamp">∞</span>
+                            </div>
+
+                            <div id="piDisplay" class="pi-display" aria-live="polite">
+                                <span class="pi-integer">3</span><span class="decimal-point">.</span>
+                            </div>
+
+                            <div id="countdown" class="countdown" aria-live="polite"></div>
+
+                            <div class="pi-paper-bottom">
+                                <span id="displayCaption">The digits after the decimal point are the sequence.</span>
+                                <span class="handwriting">look closely</span>
+                            </div>
+                        </div>
+
+                        <div class="study-instructions">
+                            <span class="instruction-icon">✳</span>
+                            <div>
+                                <strong id="instructionHeading">Watch. Remember. Repeat.</strong>
+                                <p id="instructionText">
+                                    Choose how you want to study the sequence, then enter the digits in order.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="progress-block" id="progressSection">
+                            <div class="progress-labels">
+                                <span>Recall progress</span>
+                                <span id="progressText">0 / 1</span>
+                            </div>
+
+                            <div
+                                id="progressBar"
+                                class="progress-track"
+                                role="progressbar"
+                                aria-label="Sequence recall progress"
+                                aria-valuemin="0"
+                                aria-valuemax="1"
+                                aria-valuenow="0"
+                            >
+                                <div id="progressFill" class="progress-fill"></div>
+                            </div>
+                        </div>
+
+                        <div class="workbench-footer">
+                            <span class="tiny-label">A NOTE ON THE NOTATION</span>
+                            <p>
+                                The decimal point stays on the page. It is punctuation, not a digit you need to memorize.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="controls-column">
+                        <section class="paper-panel settings-panel">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow">YOUR METHOD</p>
+                                    <h2>Recall mode</h2>
+                                </div>
+                                <span class="specimen-number">B / 01</span>
+                            </div>
+
+                            <p class="settings-description">
+                                Pick one way to study the sequence. The two methods never run together.
+                            </p>
+
+                            <div class="mode-options" role="group" aria-label="Recall mode">
+                                <button class="mode-option selected" type="button" data-mode="digits" aria-pressed="true">
+                                    <span class="mode-symbol">123</span>
+                                    <span class="mode-copy">
+                                        <strong>Show digits</strong>
+                                        <small>Read the sequence on the paper</small>
+                                    </span>
+                                    <span class="mode-check" aria-hidden="true">✓</span>
+                                </button>
+
+                                <button class="mode-option" type="button" data-mode="keypad" aria-pressed="false">
+                                    <span class="mode-symbol">▦</span>
+                                    <span class="mode-copy">
+                                        <strong>Blink keypad</strong>
+                                        <small>Watch the number buttons flash</small>
+                                    </span>
+                                    <span class="mode-check" aria-hidden="true">✓</span>
+                                </button>
+                            </div>
+
+                            <div class="settings-divider"></div>
+
+                            <div class="panel-heading difficulty-heading">
+                                <div>
+                                    <p class="eyebrow">CHOOSE YOUR PACE</p>
+                                    <h2>Difficulty</h2>
+                                </div>
+                            </div>
+
+                            <div class="difficulty-current">
+                                <span id="difficultyName">Easy</span>
+                                <span id="difficultyDescription">One digit at a time</span>
+                            </div>
+
+                            <input
+                                id="difficultySlider"
+                                type="range"
+                                min="0"
+                                max="3"
+                                step="1"
+                                value="0"
+                                aria-label="Choose difficulty"
+                                aria-valuetext="Easy"
+                            >
+
+                            <div class="difficulty-labels" aria-hidden="true">
+                                <span>Easy</span>
+                                <span>Medium</span>
+                                <span>Hard</span>
+                                <span>Impossible</span>
+                            </div>
+                        </section>
+
+                        <section class="keypad-panel paper-panel" aria-labelledby="keypadTitle">
+                            <div class="panel-heading">
+                                <div>
+                                    <p class="eyebrow">YOUR TURN</p>
+                                    <h2 id="keypadTitle">Recall the digits</h2>
+                                </div>
+                                <span class="key-hint">0–9</span>
+                            </div>
+
+                            <p class="keypad-help">
+                                Click a number or use the number keys on your keyboard.
+                            </p>
+
+                            <div id="keypad" class="keypad" aria-label="Number pad">
+                                <button class="key" type="button" data-value="1" aria-label="Enter 1">1</button>
+                                <button class="key" type="button" data-value="2" aria-label="Enter 2">2</button>
+                                <button class="key" type="button" data-value="3" aria-label="Enter 3">3</button>
+                                <button class="key" type="button" data-value="4" aria-label="Enter 4">4</button>
+                                <button class="key" type="button" data-value="5" aria-label="Enter 5">5</button>
+                                <button class="key" type="button" data-value="6" aria-label="Enter 6">6</button>
+                                <button class="key" type="button" data-value="7" aria-label="Enter 7">7</button>
+                                <button class="key" type="button" data-value="8" aria-label="Enter 8">8</button>
+                                <button class="key" type="button" data-value="9" aria-label="Enter 9">9</button>
+                                <span class="keypad-decoration" aria-hidden="true">π</span>
+                                <button class="key" type="button" data-value="0" aria-label="Enter 0">0</button>
+                                <span class="keypad-decoration tiny-label" aria-hidden="true">∞</span>
+                            </div>
+
+                            <div class="controls">
+                                <button id="start" class="primary-button" type="button">
+                                    <span id="startLabel">Begin experiment</span>
+                                    <span aria-hidden="true">↗</span>
+                                </button>
+                            </div>
+
+                            <p id="inputStatus" class="input-status" aria-live="polite">
+                                Ready when you are.
+                            </p>
+                        </section>
+                    </section>
+                </div>
+
+                <section class="coming-soon-strip" aria-label="Future PiLabs experiments">
+                    <div>
+                        <p class="eyebrow">THE NEXT PAGES</p>
+                        <h2>More ways to explore π.</h2>
+                    </div>
+                    <p>
+                        Geometry, probability, angles, and motion. The next experiments are in development.
+                    </p>
+                </section>
+            </main>
         </div>
 
+        <footer class="site-footer">
+            <a class="footer-brand" href="#" aria-label="PiLabs home">π <strong>PiLabs</strong></a>
+            <span>Mathematics, made tangible.</span>
+            <span class="copyright">Copyright PiLabs 2026</span>
+        </footer>
     </div>
 
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
+    <section
+        id="instructionScreen"
+        class="modal-backdrop hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="introTitle"
+    >
+        <div class="modal-sheet intro-sheet">
+            <button id="closeInstructions" class="modal-close" type="button" aria-label="Close introduction">×</button>
 
-    <script src="pi.js"></script>
+            <p class="eyebrow">WELCOME TO PILABS</p>
+            <h2 id="introTitle">Math is something you can explore.</h2>
+            <p>
+                PiLabs is a collection of small, interactive experiments for understanding mathematical ideas.
+                Not just formulas to read — things to try.
+            </p>
 
-    <script src="game.js"></script>
+            <div class="modal-example">
+                <span class="example-number">π = 3.14159...</span>
+                <span class="example-note handwriting">it keeps going</span>
+            </div>
 
+            <div class="onboarding-step">
+                <span>01</span>
+                <div>
+                    <strong>Start with memory</strong>
+                    <p>Learn the digits of π through short recall rounds.</p>
+                </div>
+            </div>
+
+            <div class="onboarding-step">
+                <span>02</span>
+                <div>
+                    <strong>Choose your method</strong>
+                    <p>Read the digits on the paper or watch the keypad blink. Never both.</p>
+                </div>
+            </div>
+
+            <div class="onboarding-step">
+                <span>03</span>
+                <div>
+                    <strong>Explore what comes next</strong>
+                    <p>More experiments will cover circles, probability, angles, and waves.</p>
+                </div>
+            </div>
+
+            <label class="remember-intro">
+                <input id="dontShowIntro" type="checkbox">
+                <span>Don't show this introduction again</span>
+            </label>
+
+            <button id="introStart" class="primary-button" type="button">
+                Open the notebook <span aria-hidden="true">→</span>
+            </button>
+        </div>
+    </section>
+
+    <section
+        id="gameOver"
+        class="modal-backdrop hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="gameOverTitle"
+    >
+        <div class="modal-sheet result-sheet">
+            <button id="closeResults" class="modal-close" type="button" aria-label="Close results">×</button>
+
+            <p class="eyebrow">EXPERIMENT COMPLETE</p>
+            <h2 id="gameOverTitle">The sequence slipped away.</h2>
+            <p id="resultMessage">Every attempt teaches you something.</p>
+
+            <div class="result-score">
+                <span class="tiny-label">LONGEST SEQUENCE COMPLETED</span>
+                <strong id="finalScore">0 digits</strong>
+            </div>
+
+            <div class="result-details">
+                <div>
+                    <span>Difficulty</span>
+                    <strong id="difficultyResult">Easy</strong>
+                </div>
+                <div>
+                    <span>Rounds completed</span>
+                    <strong id="roundsResult">0</strong>
+                </div>
+            </div>
+
+            <p id="newBestNote" class="new-best-note hidden">A new personal best.</p>
+
+            <button id="restart" class="primary-button" type="button">
+                Try again <span aria-hidden="true">↻</span>
+            </button>
+
+            <button id="reviewPi" class="text-button" type="button">
+                Review the available digits of π
+            </button>
+        </div>
+    </section>
 </body>
-
 </html>
